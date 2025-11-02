@@ -11,8 +11,8 @@ const int sensorEchoPin = 15;             // sensorEchoPin is where distance sen
 const int cylinderTransistorGatePin = 38; // cylinderTransistorGatePin will flip the transistor to power the pneumatic solenoid valve's 12v power
 const int minTriggerDistance = 10;        // minimum distance, inches,  object must be away in order to trigger
 const int maxTriggerDistance = 72;        // maximum distance, inches, object must be away in order to trigger
-const int cylinderUpMillis = 500;         // cylinderUpMillis is number of millis to hold creature up
-const int resetMillis = 500;              // resetMillis is number of millis to delay before ready to run again
+const int cylinderUpMillis = 10000;         // cylinderUpMillis is number of millis to hold creature up
+const int resetMillis = 5000;              // resetMillis is number of millis to delay before ready to run again
 const int requiredHitCount = 2;           // number of matching hits from distance sensor to trigger rise
 const int soundTriggerPin = 18;           // soundTriggerPin is the pin # linked to the sound card, bringing it LOW turns on sound
 
@@ -85,20 +85,20 @@ void normalLogic() {
  if(countOfHits >= requiredHitCount )
  {
    //raise body by triggering transistor (which powers solenoid)
-   log("Rumble box...");
-
+   log("turnSoundOn()...");
    turnSoundOn();
+   log("delay()...");
+   delay(6000);
+   log("extendCylinder()...");
    extendCylinder();
-   delay(cylinderUpMillis);
-   collapseCylinder();
-   extendCylinder();
-   delay(cylinderUpMillis);
-   collapseCylinder();
-
-   extendCylinder();
-   delay(cylinderUpMillis);
-   collapseCylinder();
+   log("delay(cylinderUpMillis)...");
+   delay(5000);
+   log("turnSoundOff()...");
    turnSoundOff();
+   log("delay(cylinderUpMillis)...");
+   delay(5000);
+   log("collapseCylinder()...");
+   collapseCylinder();
    
    delay(resetMillis);
  }
