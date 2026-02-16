@@ -1,7 +1,6 @@
 /*
  * Hardware setup:
  * 
- * 
  */
 
 // establish pin constants
