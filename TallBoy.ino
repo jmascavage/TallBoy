@@ -109,7 +109,7 @@ long getSensorDistance()
   // The sensor is triggered by a HIGH pulse of 10 or more microseconds.
   // Give a short LOW pulse beforehand to ensure a clean HIGH pulse:  
   digitalWrite(sensorTrigPin, LOW);
-  delayMicroseconds(2);
+  delayMicroseconds(2000);
   digitalWrite(sensorTrigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(sensorTrigPin, LOW);
